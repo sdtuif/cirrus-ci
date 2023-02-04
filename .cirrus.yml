@@ -8,7 +8,7 @@ task:
   container:
       image: apon77/aosp:cirrus
       cpu: 12
-      memory: 32G
+      memory: 34G
       stateful: true
       greedy: true
       volumes:
