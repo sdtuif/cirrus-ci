@@ -1,1 +1,17 @@
-task
+env:
+    CIRRUS_CLONE_DEPTH: 1
+    BUILD_HOSTNAME: "cirrus-ci.org"
+    
+task:
+  name: "Compile Rom"
+  timeout_in: 4h
+  container:
+      image: apon77/aosp:cirrus
+      cpu: 8
+      memory: 32G
+      stateful: true
+      greedy: true
+      volumes:
+          - /home/cirrus/roms:/home/cirrus/roms
+          - /home/cirrus/ccache:/home/cirrus/ccache
+          - /home/cirrus/.config:/home/cirrus/.config
