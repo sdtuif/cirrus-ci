@@ -7,8 +7,8 @@ task:
   timeout_in: 4h
   container:
       image: apon77/aosp:cirrus
-      cpu: 12
-      memory: 34G
+      cpu: 8
+      memory: 32G
       stateful: true
       greedy: true
       volumes:
