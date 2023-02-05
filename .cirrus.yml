@@ -1,8 +1,8 @@
 task:
   name: "Complile Aosp Rom."
-  timeout_in: 240m  
+  timeout_in: 4h
   container:
-      image: ubuntu:20.04
+      image: apon77/aosp:cirrus
       cpu: 8
       memory: 32G
         
@@ -17,8 +17,8 @@ task:
        - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache clang -y
        - sudo apt install python3 -y
        - sudo ln -sf /usr/bin/python3 /usr/bin/python
-       - git config --global user.name "Sushrut1101"
-       - git config --global user.email "guptasushrut@gmail.com"
+       - git config --global user.name "sdtuif"
+       - git config --global user.email "sadia.islam6382@gmail.com"
        - git clone https://github.com/akhilnarang/scripts.git ~/scripts
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
@@ -61,7 +61,7 @@ task:
       - echo "Uploading the Build..."
       - echo "============================"
       - cd ~/work
-      - cd out/target/product/"$DEVICE"
+      - cd out/target/product/lavender
       - ls -lh
       - pwd
       - chmod 777 *
