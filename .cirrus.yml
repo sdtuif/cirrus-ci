@@ -1,21 +1,4 @@
 env:
-    MANIFEST: https://github.com/Sa-Sajjad/android_manifest_nusa.git -b 10
-    DEVICE: lavender
-    OEM: xiaomi
-    DT_LINK: https://github.com/Sa-Sajjad/device_xiaomi_lavender.git
-    DT_PATH: device/$OEM/$DEVICE
-    VT_LINK: https://github.com/Sa-Sajjad/vendor_xiaomi_lavender.git
-    VT_PATH: vendor/$OEM/$DEVICE
-    KT_LINK: https://github.com/Sa-Sajjad/kernel_xiaomi_lavender.git
-    KT_PATH: kernel/$OEM/$PLATFORM
-    CM_LINK: 
-    CM_PATH:
-    HW_LINK:
-    HW_PATH:
-    
-    TARGET: bacon
-    EXTRA_CMD: export SKIP_ABI_CHECKS=true
-    LUNCH_COMBO: nad_${DEVICE}-userdebug
     OUTPUT: PixelExperience*.zip
 
 task:
@@ -55,11 +38,11 @@ task:
       - echo "============================"
       - mkdir -p ~/work
       - cd ~/work
-      - repo init -u $MANIFEST
-      - repo sync -j31 --force-sync --no-tags --no-clone-bundle
-      - git clone $DT_LINK $DT_PATH
-      - git clone $VT_LINK $VT_PATH
-      - git clone $KT_LINK $KT_PATH
+      - repo init -u https://github.com/Sa-Sajjad/android_manifest_nusa -b 10
+      - repo sync -c --force-sync --no-tags --no-clone-bundle
+      - git clone https://github.com/Sa-Sajjad/device_xiaomi_lavender -b sa_hmp device/xiaomi/lavender
+      - git clone https://github.com/Sa-Sajjad/vendor_xiaomi_lavender -b 10 vendor/xiaomi/lavender
+      - git clone https://github.com/Sa-Sajjad/kernel_xiaomi_lavender -b hmp kernel/xiaomi/lavender
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -69,13 +52,12 @@ task:
       - echo "Starting the Build..."
       - echo "============================"
       - cd ~/work
-      - $EXTRA_CMD
       - export USE_CCACHE=1
       - export CCACHE_EXEC=/usr/bin/ccache
       - ccache -M 50G
       - . build/envsetup.sh
-      - lunch "$LUNCH_COMBO"
-      - mka -j31 $TARGET
+      - lunch nad_lavender-userdebug
+      - mka nad -j
      
   Upload_script:
       - echo "============================"
