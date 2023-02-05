@@ -1,8 +1,5 @@
-env:
-    OUTPUT: PixelExperience*.zip
-
 task:
-  name: "Setting Up, Syncing, Building and Uploading..."
+  name: "Complile Aosp Rom."
   timeout_in: 240m  
   container:
       image: ubuntu:20.04
@@ -42,7 +39,7 @@ task:
       - repo sync -c --force-sync --no-tags --no-clone-bundle
       - git clone https://github.com/Sa-Sajjad/device_xiaomi_lavender -b sa_hmp device/xiaomi/lavender
       - git clone https://github.com/Sa-Sajjad/vendor_xiaomi_lavender -b 10 vendor/xiaomi/lavender
-      - git clone https://github.com/Sa-Sajjad/kernel_xiaomi_lavender -b hmp kernel/xiaomi/lavender
+      - git clone https://github.com/Sa-Sajjad/kernel_xiaomi_lavender kernel/xiaomi/lavender
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -68,7 +65,7 @@ task:
       - ls -lh
       - pwd
       - chmod 777 *
-      - curl --upload-file $(echo $OUTPUT) https://transfer.sh | tee link.txt && echo " "
+      - curl --upload-file $(echo Nusantara*.zip) https://transfer.sh | tee link.txt && echo " "
       - echo " "
       - echo "============================"
       - echo "Build Uploaded!"
