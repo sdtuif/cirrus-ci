@@ -17,7 +17,6 @@ task:
           - /home/cirrus/.config:/home/cirrus/.config
 
   Sync_script:
-      - echo "============================"
       - echo "Syncing The Sources..."
       - echo "============================"
       - mkdir -p ~/work
