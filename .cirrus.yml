@@ -2,7 +2,7 @@ env:
     MANIFEST: https://github.com/Sa-Sajjad/android_manifest_nusa.git -b 10
     DEVICE: lavender
     OEM: xiaomi
-    DT_LINK: https://github.com/PixelExperience-Devices/device_xiaomi_miatoll.git
+    DT_LINK: https://github.com/device_xiaomi_lavender.git
     DT_PATH: device/$OEM/$DEVICE
     VT_LINK: https://github.com/Sa-Sajjad/vendor_xiaomi_lavender.git
     VT_PATH: vendor/$OEM/$DEVICE
