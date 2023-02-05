@@ -2,7 +2,7 @@ task:
   name: "Complile Aosp Rom."
   timeout_in: 4h
   container:
-      image: apon77/aosp:cirrus
+      image: ubuntu:20.04
       cpu: 8
       memory: 32G
         
