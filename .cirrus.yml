@@ -1,5 +1,6 @@
 env:
     CIRRUS_CLONE_DEPTH: 1
+    rclone_config: "ENCRYPTED[!812e8ae62bc12b7b59678b17e816936854238a34ed702f4623275c16e483bda637ebb78df877cb34e65bbf04e76b3ae6!]"
 task:
     name: test
     timeout_in: 120m
