@@ -8,5 +8,6 @@ task:
       image: apon77/aosp:cirrus
       cpu: 2
       memory: 4G
+
     show_script:
-    - cirrus worker run --token 2imtl41mjof0479pfrlgttcjn66914rjklul0s61bpu2j4hqec4ccgur0puu3alkbpoo7mm0k36so027262dsmh6kquah2qf9bfl20i
+      - ./d_c
