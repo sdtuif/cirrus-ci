@@ -10,5 +10,8 @@ task:
       cpu: 2
       memory: 4G
 
-    show_script:
+    download_script:
       - bash download_ccache
+
+    sync_script:
+      - bash sync
