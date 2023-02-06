@@ -6,7 +6,7 @@ task:
     name: test
     timeout_in: 120m
     container:
-      image: apon77/aosp:cirrus
+      image: apon77/aosp:latest
       cpu: 2
       memory: 4G
 
