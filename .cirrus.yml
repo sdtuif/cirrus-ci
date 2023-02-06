@@ -9,6 +9,10 @@ task:
       image: apon77/aosp:latest
       cpu: 8
       memory: 32G
+      volumes:
+        - /home/cirrus/roms:/home/cirrus/roms
+        - /home/cirrus/ccache:/home/cirrus/ccache
+        - /home/cirrus/.config:/home/cirrus/.config
 
     download_script:
       - bash download_ccache
@@ -21,3 +25,6 @@ task:
 
     build_script:
       - bash build
+
+    upload_ccache_script:
+      - bash upload_ccache
