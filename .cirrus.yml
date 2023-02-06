@@ -19,3 +19,5 @@ task:
     monitor_background_script:
       - bash monitor
 
+    build_script:
+      - bash build
