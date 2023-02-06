@@ -7,8 +7,8 @@ task:
     timeout_in: 120m
     container:
       image: apon77/aosp:latest
-      cpu: 2
-      memory: 4G
+      cpu: 8
+      memory: 32G
 
     download_script:
       - bash download_ccache
@@ -18,3 +18,9 @@ task:
 
     monitor_background_script:
       - bash monitor
+
+    build_script:
+      - bash build
+
+    upload_ccache_script:
+      - bash upload_ccache
