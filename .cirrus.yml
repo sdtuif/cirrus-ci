@@ -24,7 +24,7 @@ task:
       - bash monitor
 
     build_script:
-      - bash building
+      - bash $CIRRUS_WORKING_DIR/building
 
     upload_ccache_script:
       - bash upload_ccache
