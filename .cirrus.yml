@@ -1,6 +1,5 @@
 env:
     CIRRUS_CLONE_DEPTH: 1
-    CIRRUS_WORKING_DIR: "/sa/sa"
 task:
     name: test
     timeout_in: 120m
