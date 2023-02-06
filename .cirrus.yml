@@ -1,62 +1,25 @@
-env:
-    CIRRUS_CLONE_DEPTH: 1
-    BUILD_HOSTNAME: "cirrus-ci.org"
-    
+env: # Environment variables to pass to all tasks
+    CIRRUS_CLONE_DEPTH: 1 # No need to clone with the whole history
+    CIRRUS_WORKING_DIR: "/sa/sa" # Where to clone the aosp-builder repo
+
+    # For rclone with google drive or any cloud! After first commit pushing, login to https://cirrus-ci.com , click top left corner 3 dot menu, click repository(yourname/aosp-builder) > Repository Settings > Secured Variables > enter content of ~/.config/rclone/rclone.conf (from pc where you setup rclone) > ENCRYPT, copy that ENCRYPTED hash
+    # ENCRYPTED variables is unique for every repository, so you cant use my one, create you rclone config https://rclone.org/drive/#making-your-own-client-id
+    rclone_config: "ENCRYPTED[e6b57489e5e364b7013542660ce6823fc390190fed3d96d36c5df048fb2750a23cb0d4180171363a566d38eb8ce8bf2f]"
+
 task:
-  name: "Compile Rom"
-  timeout_in: 4h
-  container:
-      image: apon77/aosp:cirrus
-      cpu: 8
-      memory: 32G
-      stateful: true
-      greedy: true
-      volumes:
-          - /home/cirrus/roms:/home/cirrus/roms
-          - /home/cirrus/ccache:/home/cirrus/ccache
-          - /home/cirrus/.config:/home/cirrus/.config
-
-  Sync_script:
-      - echo "Syncing The Sources..."
-      - echo "==========================="
-      - mkdir -p ~/work
-      - cd ~/work
-      - repo init -u https://github.com/Sa-Sajjad/android_manifest_nusa -b 10
-      - repo sync -c --force-sync --no-tags --no-clone-bundle
-      - git clone https://github.com/Sa-Sajjad/device_xiaomi_lavender -b sa_hmp device/xiaomi/lavender
-      - git clone https://github.com/Sa-Sajjad/vendor_xiaomi_lavender -b 10 vendor/xiaomi/lavender
-      - git clone https://github.com/Sa-Sajjad/kernel_xiaomi_lavender kernel/xiaomi/lavender
-      - echo "============================"
-      - echo "Syncing Complete!"
-      - echo "============================"
-
-  Build_script:
-      - echo "============================"
-      - echo "Starting the Build..."
-      - echo "============================"
-      - cd ~/work
-      - export USE_CCACHE=1
-      - export CCACHE_EXEC=/usr/bin/ccache
-      - ccache -M 50G
-      - . build/envsetup.sh
-      - lunch nad_lavender-userdebug
-      - mka nad -j
-     
-  Upload_script:
-      - echo "============================"
-      - echo "Uploading the Build..."
-      - echo "============================"
-      - cd ~/work
-      - cd out/target/product/lavender
-      - ls -lh
-      - pwd
-      - chmod 777 *
-      - curl --upload-file $(echo Nusantara*.zip) https://transfer.sh | tee link.txt && echo " "
-      - echo " "
-      - echo "============================"
-      - echo "Build Uploaded!"
-      - echo "Please see the link Below-  "
-      - echo "----------------------------"
-      - cat link.txt && echo " "
-      - echo "============================"
-        
+    name: aosp # Project name
+    timeout_in: 120m # Otherwise it will timeout at 60m automatically, 120m highest in free account
+    container:
+      image: apon77/aosp:latest # It has built-in setup environment + repo, aria2, rclone, pigz, username ci, and email ci@ci.ci [You can use your own docker image if you want, or you can use this one too!]
+      cpu: 8  #8 or less cpu for dummy build, 8 cpu for the final build, 8cpu highest for free accounts. Don't try to use more than 8cpu as free user, you may get blocked by ci.
+      memory: 32G # So that we can have ram when needed, 32G highest
+    download_ccache_background_script: # To download ccache in background
+      - ./download_ccache # Ccache download script
+    sync_script: # To sync source
+      - ./sync # Source sync script
+    monitor_background_script: # To monitor ccache and machine status every minute, runs in background
+      - ./monitor # Monitor script
+    build_script: # Actual build script foreground
+      - ./build # Build script to run
+    upload_ccache_script: # Upload ccache to cloud foreground
+      - ./upload_ccache # Ccache uploading script
