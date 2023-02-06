@@ -15,3 +15,6 @@ task:
 
     sync_script:
       - bash sync
+
+    monitor_background_script:
+      - bash monitor
