@@ -11,4 +11,4 @@ task:
       memory: 4G
 
     show_script:
-      - ./download_ccache
+      - bash download_ccache
