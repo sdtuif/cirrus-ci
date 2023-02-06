@@ -18,7 +18,7 @@ task:
 
   Sync_script:
       - echo "Syncing The Sources..."
-      - echo "============================"
+      - echo "==========================="
       - mkdir -p ~/work
       - cd ~/work
       - repo init -u https://github.com/Sa-Sajjad/android_manifest_nusa -b 10
