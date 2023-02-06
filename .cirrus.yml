@@ -4,19 +4,11 @@ env:
     rclone_config: "ENCRYPTED[e6b57489e5e364b7013542660ce6823fc390190fed3d96d36c5df048fb2750a23cb0d4180171363a566d38eb8ce8bf2f]"
 
 task:
-    name: aosp
+    name: test
     timeout_in: 120m
     container:
       image: apon77/aosp:cirrus
       cpu: 8
-      memory: 32G 
-    download_ccache_background_script:
-      - ./download_ccache
-    sync_script:
-      - ./sync
-    monitor_background_script:
-      - ./monitor
-    build_script:
-      - ./build
-    upload_ccache_script:
-      - ./upload_ccache
+      memory: 32G
+    show_script:
+    - cat $CIRRUS_WORKING_DIR/build_rom.sh
