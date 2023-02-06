@@ -19,8 +19,3 @@ task:
     monitor_background_script:
       - bash monitor
 
-    build_script:
-      - bash build
-
-    upload_ccache_script:
-      - bash upload_ccache
