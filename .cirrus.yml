@@ -18,5 +18,6 @@ task:
       - bash download_ccache
       - bash monitor
       - bash sync
+      - bash nusa_tar_gz
       - bash build
 
