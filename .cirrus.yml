@@ -17,7 +17,6 @@ task:
     download_script:
       - bash download_ccache
       - bash monitor
-      - bash upload_ccache
       - bash sync
       - bash build
 
