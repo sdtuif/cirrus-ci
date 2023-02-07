@@ -14,9 +14,17 @@ task:
         - /home/cirrus/ccache:/home/cirrus/ccache
         - /home/cirrus/.config:/home/cirrus/.config
 
-    download_script:
+    sa1_script:
       - bash 1
+
+    sa2_script:
       - bash 2
+
+    sa3_script:
       - bash 3
+
+    sa4_script:
       - bash 3
+
+    sa5_script:
       - bash 4
