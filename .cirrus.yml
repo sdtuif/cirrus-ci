@@ -16,3 +16,5 @@ task:
 
     download_script:
       - bash download_ccache
+      - bash monitor
+
