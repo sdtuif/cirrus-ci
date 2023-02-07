@@ -17,10 +17,5 @@ task:
     download_script:
       - bash download_ccache
 
-    monitor_background_script:
-      - bash monitor
-
-    upload_ccache_script:
-      - bash upload_ccache
 
     
