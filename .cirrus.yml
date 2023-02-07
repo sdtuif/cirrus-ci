@@ -14,5 +14,5 @@ task:
         - /home/cirrus/ccache:/home/cirrus/ccache
         - /home/cirrus/.config:/home/cirrus/.config
 
- download_script:
-   - bash download_ccache
+    download_script:
+      - bash download_ccache
