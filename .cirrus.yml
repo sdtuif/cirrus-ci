@@ -17,9 +17,6 @@ task:
     sa2_script:
       - bash 2 # sync
 
-    sa3_script:
-      - bash 3 # monitor
-
     sa4_script:
       - bash 4 # building
 
