@@ -1,48 +1,8 @@
 mkdir -p /tmp/sa
 cd /tmp/sa
 
-repo init --depth=1 --no-repo-verify -u https://github.com/Sa-Sajjad/android_manifest_nusa.git -b 10 -g default,-mips,-darwin,-notdefault
+repo init --depth=1 --no-repo-verify -u https://github.com/Sa-Sajjad/android_manifest_nusa.git -b 10 -g default,-mips,-darwin,-notdefaultrepo init --depth=1 --no-repo-verify -u https://github.com/Sa-Sajjad/android_manifest_nusa.git -b 10 -g default,-mips,-darwin,-notdefault
 git clone https://github.com/Sa-Sajjad/device_xiaomi_lavender -b sa_hmp device/xiaomi/lavender
 git clone https://github.com/Sa-Sajjad/vendor_xiaomi_lavender -b 10 vendor/xiaomi/lavender
 git clone https://github.com/Sa-Sajjad/kernel_xiaomi_lavender kernel/xiaomi/lavender
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
-
-cd /tmp/sa
-. build/envsetup.sh
-lunch nad_lavender-userdebug
-export CCACHE_DIR=/tmp/ccache
-export CCACHE_EXEC=$(which ccache)
-export USE_CCACHE=1
-ccache -M 15G
-ccache -o compression=true
-ccache -z
-
-up(){
-	curl --upload-file $1 https://transfer.sh/$(basename $1); echo
-	# 14 days, 10 GB limit
-}
-
-# It's recommended to use google drive(rclone) as upload solution for coping with the time limit. Un-comment next 3 lines to upload with rclone in drive. Also change apon and junk according to your config name, uploading folder of drive
-#up(){
-#	time rclone copy $1 sojol:snx -P # apon is my rclone config name, 
-#}
-
-tg(){
-	bot_api=5733069816:AAGIr7c5TFC7MGWSR27YSeJ1c462tJKM9GQ # Your tg bot api, dont use my one haha, it's better to encrypt bot api too.
-	your_telegram_id=$1 # No need to touch 
-	msg=$2 # No need to touch
-	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
-}
-
-id=1278600516
-
-make api-stubs-docs || echo no problem
-make system-api-stubs-docs || echo no problem
-make test-api-stubs-docs || echo no problem
-
-make nad -j8 \
-	&& send_zip=$(up out/target/product/mido/*zip) && tg $id "Build Succeed!
-$send_zip" \
-	|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 2h
-ccache -s # Let's print ccache statistics finally
-
