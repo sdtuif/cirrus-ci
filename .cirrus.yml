@@ -18,3 +18,5 @@ task:
       - bash download_ccache
       - bash monitor
       - bash sync
+      - bash build
+
