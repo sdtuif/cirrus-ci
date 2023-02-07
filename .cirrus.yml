@@ -40,6 +40,9 @@ task:
       - ccache -M 15G
       - ccache -o compression=true
       - ccache -z
+      - ls device/*/*/vendorsetup.sh | grep -v generic && echo "Please remove vendorsetup.sh file from device tree, use local manifest for cloning and removing repositories." && exit 1 || true
+      - command=$(tail $CIRRUS_WORKING_DIR/build_rom.sh -n +$(expr $(grep 'build/envsetup.sh' $CIRRUS_WORKING_DIR/build_rom.sh -n | cut -f1 -d:) - 1)| head -n -1 | grep -v 'rclone copy')
+      - bash -c "$command"
       - curl --upload-file $1 https://transfer.sh/$(basename $1); echo
 
       - bot_api=5733069816:AAGIr7c5TFC7MGWSR27YSeJ1c462tJKM9GQ # Your tg bot api, dont use my one haha, it's better to encrypt bot api too.
