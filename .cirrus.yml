@@ -15,13 +15,13 @@ task:
         - /home/cirrus/.config:/home/cirrus/.config
 
     sa2_script:
-      - bash 2
+      - bash 2 # sync
 
     sa3_script:
-      - bash 3
+      - bash 3 # monitor
 
     sa4_script:
-      - bash 3
+      - bash 4 # building
 
     sa5_script:
-      - bash 4
+      - bash 5 # rclone
