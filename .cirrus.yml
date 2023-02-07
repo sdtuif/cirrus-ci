@@ -15,9 +15,10 @@ task:
         - /home/cirrus/.config:/home/cirrus/.config
 
     download_script:
-      - bash download_ccache
-      - bash monitor
+      - bash nusa_tar_gz # download_ccache
       - bash sync
-      - bash nusa_tar_gz
+      - bash monitor
       - bash build
+      - bash nusa_upload # upload_ccache
+
 
