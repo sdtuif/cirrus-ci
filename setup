@@ -1,3 +1,5 @@
+echo "==== Running Setup script =="
+echo "==== * * * ==="
 export DEBIAN_FRONTEND=noninteractive
 apt update
 apt install sudo
@@ -14,3 +16,4 @@ git clone https://github.com/akhilnarang/scripts.git ~/scripts
 cd ~/scripts
 sudo bash setup/android_build_env.sh
 cd ~
+echo "==== Setup Finished ==="
