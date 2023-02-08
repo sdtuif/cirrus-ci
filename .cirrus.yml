@@ -11,7 +11,7 @@ task:
       stateful: true
       greedy: true
   run_script:
-    - wget https://github.com/xenxynon/build-releases/releases/download/AOSPA/aospa-topaz-beta-1-lavender-20230207-0541.zip /roms/
+    - git clone https://github.com/Apon77/aosp-builder /roms/
 Sa-Sajjad-backup/out/target/product/lavender
   upload_script:
     - bash upload_rom
