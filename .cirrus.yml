@@ -13,8 +13,7 @@ task:
   run_script:
     - mkdir roms
     - cd roms
-    - git clone https://github.com/Apon77/aosp-builder /
-Sa-Sajjad-backup/out/target/product/lavender
+    - git clone https://github.com/Apon77/aosp-builder Sa-Sajjad-backup/out/target/product/lavender
   upload_script:
     - bash upload_rom
 
