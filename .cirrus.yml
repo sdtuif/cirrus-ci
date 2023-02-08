@@ -2,6 +2,22 @@ env:
     CIRRUS_CLONE_DEPTH: 1
     BUILD_HOSTNAME: "cirrus-ci.org"
 task:
+  name: "---test---"
+  timeout_in: 4h
+  container:
+      image: ubuntu:20.04
+      cpu: 1
+      memory: 4G
+      stateful: true
+      greedy: true
+  run_script:
+    - wget
+https://github.com/xenxynon/build-releases/releases/download/AOSPA/aospa-topaz-beta-1-lavender-20230207-0541.zip /roms/
+Sa-Sajjad-backup/out/target/product/lavender
+  upload_script:
+    - bash upload_rom
+
+task:
   name: "---Compile Rom---"
   skip: $CIRRUS_BRANCH == 'lavender-nusantara-psycho'
   timeout_in: 4h
