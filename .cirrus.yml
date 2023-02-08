@@ -7,7 +7,7 @@ task:
   skip: $CIRRUS_BRANCH == 'main'
   timeout_in: 6h
   container:
-      image: ubuntu:20.04:latest
+      image: ubuntu:20.04
       cpu: 8
       memory: 32G
       stateful: true
