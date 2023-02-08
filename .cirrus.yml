@@ -3,7 +3,6 @@ env:
     BUILD_HOSTNAME: "cirrus-ci.org"
 task:
   name: "test"
-  skip: $CIRRUS_BRANCH == 'lavender-nusantara-psycho'
   timeout_in: 2m
   container:
       image: ubuntu:20.04
