@@ -13,7 +13,7 @@ task:
 
   run_script:
     - apt update -y
-    - apt-get install git
+    - apt-get install git -y
     - mkdir roms
     - cd roms
     - git clone https://github.com/Apon77/aosp-builder Sa-Sajjad-backup/out/target/product/lavender
