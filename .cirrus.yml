@@ -12,7 +12,7 @@ task:
       greedy: true
 
   run_script:
-    - apt update
+    - apt update -y
     - apt-get install git
     - mkdir roms
     - cd roms
