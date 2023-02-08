@@ -1,7 +1,20 @@
 env:
     CIRRUS_CLONE_DEPTH: 1
     BUILD_HOSTNAME: "cirrus-ci.org"
-    
+task:
+  name: "test"
+  skip: $CIRRUS_BRANCH == 'lavender-nusantara-psycho'
+  timeout_in: 2m
+  container:
+      image: ubuntu:20.04
+      cpu: 1
+      memory: 4G
+      stateful: true
+      greedy: true
+
+  show_setup_script:
+    - bash setup
+
 task:
   name: "--Compile Rom--"
   skip: $CIRRUS_BRANCH == 'lavender-nusantara-psycho'
