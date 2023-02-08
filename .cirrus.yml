@@ -2,21 +2,8 @@ env:
     CIRRUS_CLONE_DEPTH: 1
     BUILD_HOSTNAME: "cirrus-ci.org"
 task:
-  name: "test"
-  timeout_in: 1h
-  container:
-      image: ubuntu:20.04
-      cpu: 1
-      memory: 4G
-      stateful: true
-      greedy: true
-
-  show_setup_script:
-    - bash setup
-
-task:
   name: "--Compile Rom--"
-  skip: $CIRRUS_BRANCH == 'lavender-nusantara-psycho'
+  skip: $CIRRUS_BRANCH == 'lavender-nusantara-psycho00'
   timeout_in: 6h
   container:
       image: ubuntu:20.04
@@ -33,7 +20,7 @@ task:
     - cat $CIRRUS_WORKING_DIR/build_rom.sh
     - cat $CIRRUS_WORKING_DIR/setup
 
-  show_setup_script:
+  run_setup_cmd_script:
     - bash setup
 
   sync_script:
