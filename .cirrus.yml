@@ -7,7 +7,7 @@ task:
   skip: $CIRRUS_BRANCH == 'main'
   timeout_in: 6h
   container:
-      image: apon77/aosp:cirrus
+      image: ubuntu:20.04:latest
       cpu: 8
       memory: 32G
       stateful: true
@@ -19,6 +19,11 @@ task:
           
   show_script:
     - cat $CIRRUS_WORKING_DIR/build_rom.sh
+    - cat $CIRRUS_WORKING_DIR/setup
+
+  show_setup_script:
+    - bash setup
+
   sync_script:
     - set -e
     - rom_name=$(grep init $CIRRUS_WORKING_DIR/build_rom.sh -m 1 | cut -d / -f 4)
