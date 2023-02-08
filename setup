@@ -2,7 +2,7 @@ sudo su
 
 add-apt-repository ppa:openjdk-r/ppa
 
-apt-get update
+apt-get update -y
 
 apt install openssh-server screen python git openjdk-8-jdk android-tools-adb bc bison \
 build-essential curl flex g++-multilib gcc-multilib gnupg gperf imagemagick lib32ncurses-dev \
