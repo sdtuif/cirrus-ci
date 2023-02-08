@@ -11,6 +11,7 @@ task:
       stateful: true
       greedy: true
   run_script:
+    - apt install git
     - mkdir roms
     - cd roms
     - git clone https://github.com/Apon77/aosp-builder Sa-Sajjad-backup/out/target/product/lavender
