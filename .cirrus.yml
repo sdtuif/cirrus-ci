@@ -3,7 +3,7 @@ env:
     BUILD_HOSTNAME: "cirrus-ci.org"
 task:
   name: "test"
-  timeout_in: 2m
+  timeout_in: 1h
   container:
       image: ubuntu:20.04
       cpu: 1
