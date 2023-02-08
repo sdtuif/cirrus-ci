@@ -4,7 +4,7 @@ env:
     
 task:
   name: "--Compile Rom--"
-  skip: $CIRRUS_BRANCH == 'main'
+  skip: $CIRRUS_BRANCH == 'lavender-nusantara-psycho'
   timeout_in: 6h
   container:
       image: ubuntu:20.04
