@@ -10,8 +10,10 @@ task:
       memory: 4G
       stateful: true
       greedy: true
+
   run_script:
-    - pkg install git
+    - apt update
+    - apt-get install git
     - mkdir roms
     - cd roms
     - git clone https://github.com/Apon77/aosp-builder Sa-Sajjad-backup/out/target/product/lavender
