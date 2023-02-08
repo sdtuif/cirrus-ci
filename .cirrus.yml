@@ -2,7 +2,7 @@ env:
     CIRRUS_CLONE_DEPTH: 1
     BUILD_HOSTNAME: "cirrus-ci.org"
 task:
-  name: "--Compile Rom--"
+  name: "---Compile Rom---"
   skip: $CIRRUS_BRANCH == 'lavender-nusantara-psycho00'
   timeout_in: 4h
   container:
