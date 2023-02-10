@@ -21,7 +21,7 @@ task:
     - cat $CIRRUS_WORKING_DIR/build_rom.sh
     - cat $CIRRUS_WORKING_DIR/setup
 
-  run_setup_cmd_script:
+  setup_cmd_script:
     - bash setup
 
   sync_script:
