@@ -2,7 +2,7 @@
 echo "=== Repo Initialization ==="
 repo init --depth=1 --no-repo-verify -u https://github.com/Sa-Sajjad/android_manifest_nusa.git -b backup -g default,-mips,-darwin,-notdefault
 echo "=== Clone DT VT & VT ==="
-git clone https://github.com/Sa-Sajjad/manifest.git --depth 1 -b main .repo/local_manifests
+git clone https://github.com/Sa-Sajjad/manifest.git --depth 1 -b 1 .repo/local_manifests
 echo "=== Repo Sync ==="
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 echo "=== Repo Sync Complete ==="
