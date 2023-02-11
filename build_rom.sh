@@ -1,4 +1,4 @@
-# sync rom 😔
+# sync rom
 echo "=== Repo Initialization ==="
 repo init --depth=1 --no-repo-verify -u https://github.com/Sa-Sajjad/android_manifest_nusa.git -b backup -g default,-mips,-darwin,-notdefault
 echo "=== Clone DT VT & VT ==="
