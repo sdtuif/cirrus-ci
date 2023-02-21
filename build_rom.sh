@@ -4,7 +4,7 @@ git clone https://github.com/Sa-Sajjad/manifest.git --depth 1 -b 1 .repo/local_m
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # build rom
-# don't touch code
+# don't touch those command
 source build/envsetup.sh
 lunch nad_lavender-userdebug
 export TZ=Asia/Dhaka
