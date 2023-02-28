@@ -3,7 +3,7 @@ env:
     BUILD_HOSTNAME: "cirrus-ci.org"
 
 task:
-  name: "---Compile Rom---"
+  name: "---Compile Rom--"
   timeout_in: 4h
   container:
       image: ubuntu:20.04
